@@ -8,7 +8,7 @@ export function useFetchCountries() {
   const fetchCountries = async () => {
     try {
       const countryResponse = await axios.get(
-        "http://127.0.0.1:8000/api/method/ex_stay.api.countryList.countryInFrappe"
+        "http://127.0.0.1:8006/api/method/ex_stay.api.countryList.countryInFrappe"
       );
 
       if (countryResponse.data.message && countryResponse.data.message.data) {

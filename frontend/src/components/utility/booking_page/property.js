@@ -26,7 +26,7 @@ export function useProperty(propertyTitle) {
     try {
       console.log("Fetching property offers...");
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/method/ex_stay.api.property.get_property_details"
+        "http://127.0.0.1:8006/api/method/ex_stay.api.property.get_property_details"
       );
 
       console.log("🔍 Full API Response:", response);
@@ -59,7 +59,7 @@ export function useProperty(propertyTitle) {
     try {
       console.log("Fetching hotel packages...");
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/method/ex_stay.api.hotel_packages.get_hotel_packages"
+        "http://127.0.0.1:8006/api/method/ex_stay.api.hotel_packages.get_hotel_packages"
       );
   
       console.log("🔍 Full API Response:", response);

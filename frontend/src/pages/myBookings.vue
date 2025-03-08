@@ -22,7 +22,7 @@
             <div class="p-6 bg-green-600 text-white">
               <h1 class="text-2xl font-semibold">My Bookings</h1>
             </div>
-  
+
             <!-- Bookings List -->
             <div class="p-6">
               <div v-if="loading" class="text-center text-gray-500">Loading bookings...</div>
@@ -33,20 +33,20 @@
                 <div
                   v-for="booking in filteredBookings"
                   :key="booking.name"
-                  class="mb-6 border-b pb-6 last:border-b-0 flex items-center gap-6"
+                  class="mb-6 border-b pb-6 last:border-b-0 flex flex-col md:flex-row items-center md:items-start gap-6"
                 >
                   <!-- Property Image -->
                   <img
                     :src="booking.profile_picture_import"
                     alt="Property Image"
-                    class="w-[200px] h-[200px] object-cover rounded-lg shadow-sm border"
+                    class="w-full md:w-[200px] h-[200px] object-cover rounded-lg shadow-sm border"
                   />
-  
+
                   <!-- Booking Details -->
                   <div class="flex-grow">
-                    <div class="flex justify-between items-start">
+                    <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-4 md:gap-0">
                       <!-- Left Section -->
-                      <div>
+                      <div class="text-center md:text-left">
                         <h2 class="text-xl font-semibold text-gray-500 mb-2">{{ booking.name }}</h2>
                         <h2 class="text-xl font-semibold">{{ booking.title }}</h2>
                         <p class="text-gray-600">{{ booking.country }} | {{ booking.city }} | {{ booking.location }}</p>
@@ -55,39 +55,36 @@
                         <p class="text-gray-700">Check-out: {{ booking.check_out }}</p>
                         <p class="text-gray-700">Nights: {{ booking.no_of_nights }}</p>
                       </div>
-  
-                      <!-- Status & Cancel Button -->
-                      <div class="flex items-center gap-4">
+
+                      <!-- Status & Cancel Button (Stacked on Mobile) -->
+                      <div class="flex flex-col w-full md:flex-row md:w-auto gap-4">
                         <span
                           :class="{
                             'text-green-800 bg-green-400 rounded-full text-sm py-2 px-4': booking.status === 'Confirmed',
                             'text-yellow-800 bg-yellow-400 rounded-full text-sm py-2 px-4': booking.status === 'Pending',
                             'text-red-800 bg-red-400 rounded-full text-sm py-2 px-4': booking.status === 'Cancelled',
                           }"
-                          class="font-semibold"
+                          class="font-semibold w-full text-center md:w-auto"
                         >
                           {{ booking.status }}
                         </span>
                         <button
-                        @click="cancelMyBooking.submit(booking.name)"
-                        class="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-600"
-                        
-                      >
-                        {{ loading ? "Cancelling..." : "Cancel" }}
-                      </button>
+                          @click="cancelMyBooking.submit(booking.name)"
+                          class="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-600 w-full md:w-auto"
+                        >
+                          {{ loading ? "Cancelling..." : "Cancel" }}
+                        </button>
                       </div>
                     </div>
-  
+
                     <!-- Price Details -->
-                    <div class="mt-4 flex justify-end text-right">
-                      <div>
-                        <p class="text-gray-600 text-sm">
-                          <span class="font-semibold text-[20px]">{{ booking.currency }} {{ booking.price_per_night }}</span> night
-                        </p>
-                        <p class="text-green-600 text-lg font-semibold pt-3">
-                          Total Price: {{ booking.currency }} {{ Number(booking.price_per_night) * Number(booking.no_of_nights) }}
-                        </p>
-                      </div>
+                    <div class="mt-4 text-center md:text-right">
+                      <p class="text-gray-600 text-sm">
+                        <span class="font-semibold text-[20px]">{{ booking.currency }} {{ booking.price_per_night }}</span> night
+                      </p>
+                      <p class="text-green-600 text-lg font-semibold pt-3">
+                        Total Price: {{ booking.currency }} {{ Number(booking.price_per_night) * Number(booking.no_of_nights) }}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -96,6 +93,8 @@
           </div>
         </div>
       </main>
+
+
   
       <!-- Footer -->
       <FooterComponent class="mt-auto" />

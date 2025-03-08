@@ -130,7 +130,7 @@ export default {
     const getImageUrl = (imagePath) => {
       if (!imagePath) return "../assets/images/default-property.jpg";
       if (imagePath.startsWith("/files")) {
-        return `http://127.0.0.1:8000${imagePath}`;
+        return `http://127.0.0.1:8006${imagePath}`;
       }
       return imagePath;
     };
@@ -138,7 +138,7 @@ export default {
     const fetchProperties = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8000/api/method/ex_stay.api.homeproperty.homeproperty"
+          "http://127.0.0.1:8006/api/method/ex_stay.api.homeproperty.homeproperty"
         );
         properties.value = response.data.message;
         console.log(properties.value);

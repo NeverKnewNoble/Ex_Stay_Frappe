@@ -85,7 +85,7 @@ async function submit() {
     loading.value = true;
     try {
         const response = await axios.post(
-            'http://127.0.0.1:8000/api/method/ex_stay.api.forgot_password.forgot_password',
+            'http://127.0.0.1:8006/api/method/ex_stay.api.forgot_password.forgot_password',
             { email: email.value },
             {
                 headers: {
